@@ -1,13 +1,16 @@
 import React from "react";
-import logo from "./logo.svg";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import HomePage from "./pages/homepage/homepage.component";
-
+import ShopPage from "./pages/shoppage/shoppage.component";
 function App() {
   return (
-    <div className="App">
-      <HomePage></HomePage>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/shop" element={<ShopPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
