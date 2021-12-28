@@ -7,7 +7,7 @@ import { Outlet, Link } from "react-router-dom";
 export const Header = () => (
   <div className="header">
     <Link className="logo-container" to="/">
-      <Logo class="logo"></Logo>
+      <Logo className="logo"></Logo>
     </Link>
     <div className="options">
       <Link className="option" to="/shop">
@@ -15,6 +15,9 @@ export const Header = () => (
       </Link>
       <Link className="option" to="/">
         Contacts
+      </Link>
+      <Link className="option" to="/signIn">
+        Sign In
       </Link>
     </div>
   </div>
