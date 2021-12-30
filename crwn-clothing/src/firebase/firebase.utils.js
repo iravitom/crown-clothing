@@ -1,5 +1,14 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  collection,
+  query,
+  where,
+  getDocs,
+} from "@firebase/firestore";
 
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
@@ -13,4 +22,28 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+export const getusers = async (userAuth, additionalData) => {
+  if (!userAuth) return;
+
+  console.log(userAuth);
+  //const docRef = await getDocs(collection(db, "users", `${userAuth.uid}`));
+  //data.docs.map((doc) => console.log(doc.data()));
+  // const docRef = doc(db, "users"), where("capital", "==", true));;
+
+  const q = query(
+    collection(db, "users"),
+    where("emailId", "==", "iravitom@googlemail.com")
+  );
+  const docSnap = await getDoc(q);
+
+  if (docSnap.exists()) {
+    console.log("Document data:", docSnap.data());
+  } else {
+    // doc.data() will be undefined in this case
+    console.log("No such document!");
+  }
+};
+
+export const db = getFirestore(app);
+
 export const auth = getAuth(app);
